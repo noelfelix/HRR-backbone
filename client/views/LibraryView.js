@@ -18,7 +18,7 @@ var LibraryView = Backbone.View.extend({
       })
     );
   }
-
+  
 });
 // Render everything underneath the player
 // Creates a table to display a LibraryEntryView for each song.
