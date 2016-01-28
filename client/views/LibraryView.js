@@ -4,8 +4,17 @@ var LibraryView = Backbone.View.extend({
   tagName: "table",
 
   initialize: function() {
-    this.render();
+    this.render(); 
+    var context = this;
+
+    this.collection.map(function(song){
+      song.on('played', function(){
+        context.render();
+      }, this);
+    });
   },
+
+
 
   render: function(){
     // to preserve event handlers on child nodes, we must call .detach() on them before overwriting with .html()
@@ -18,7 +27,7 @@ var LibraryView = Backbone.View.extend({
       })
     );
   }
-  
+
 });
 // Render everything underneath the player
 // Creates a table to display a LibraryEntryView for each song.
